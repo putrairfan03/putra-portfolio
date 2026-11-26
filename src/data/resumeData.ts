@@ -21,6 +21,9 @@ export interface ResumeProjectItem {
 
 export const RESUME_PDF_URL = `${import.meta.env.BASE_URL}Putra_Irfan_Resume.pdf`;
 
+export const ECERTIFICATES_URL =
+  'https://drive.google.com/drive/folders/15hUmKnWlw0z__EniCc7m54exrLcWSHlI?usp=sharing';
+
 export const RESUME_FULL_NAME = 'Putra Nurizz Irfan bin Safnirizal';
 
 export const PROFESSIONAL_STATEMENT =

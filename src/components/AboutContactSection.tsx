@@ -1,6 +1,6 @@
 import { ArrowUpRightIcon } from './Hero';
 import { useReducedMotion } from '../hooks/useReducedMotion';
-import { RESUME_PDF_URL } from '../data/resumeData';
+import { ECERTIFICATES_URL, RESUME_PDF_URL } from '../data/resumeData';
 
 interface AboutContactSectionProps {
   onOpenCvPreview: () => void;
@@ -89,6 +89,21 @@ function PrinterIcon() {
   );
 }
 
+function CertificateIcon() {
+  return (
+    <svg viewBox="0 0 18 18" fill="none" className="contact-btn__icon" aria-hidden="true">
+      <circle cx="9" cy="7" r="3.75" stroke="currentColor" strokeWidth="1.35" />
+      <path
+        d="M6.75 10.25L5.75 15.25L9 13.5L12.25 15.25L11.25 10.25"
+        stroke="currentColor"
+        strokeWidth="1.35"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function AboutContactSection({ onOpenCvPreview }: AboutContactSectionProps) {
   const reducedMotion = useReducedMotion();
 
@@ -147,6 +162,17 @@ export function AboutContactSection({ onOpenCvPreview }: AboutContactSectionProp
                 className="pill-btn pill-btn--resume-primary"
               >
                 <span>Download Resume (PDF)</span>
+                <ArrowUpRightIcon className="pill-btn__arrow" />
+              </a>
+
+              <a
+                href={ECERTIFICATES_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pill-btn pill-btn--resume-outline"
+              >
+                <CertificateIcon />
+                <span>View E-Certificates</span>
                 <ArrowUpRightIcon className="pill-btn__arrow" />
               </a>
 
