@@ -1,6 +1,6 @@
 import {
   CORE_COMPETENCIES,
-  EDUCATION_ITEM,
+  EDUCATION_AND_CERTIFICATIONS,
   EXPERIENCE_ITEMS,
   RESUME_CONTACT,
 } from '../data/resumeData';
@@ -25,17 +25,17 @@ export function ResumeSection() {
         </header>
 
         <div className="resume-grid">
-          {/* Left Column — Experience */}
+          {/* Left Column — Working Experience */}
           <div className="glass-card resume-card">
             <div className="resume-card__head">
               <div className="project-card__meta">
                 <span className="project-card__dot" aria-hidden="true" />
-                <span className="resume-card__kicker">EXPERIENCE</span>
+                <span className="resume-card__kicker">WORKING EXPERIENCE</span>
               </div>
-              <span className="project-card__status">District & Applied Analytics</span>
+              <span className="project-card__status">District Analytics</span>
             </div>
 
-            <div className="timeline">
+            <div className="timeline timeline--single">
               {EXPERIENCE_ITEMS.map((item) => (
                 <article key={item.role} className="timeline-item">
                   <div className="timeline-item__marker" aria-hidden="true" />
@@ -56,33 +56,30 @@ export function ResumeSection() {
             </div>
           </div>
 
-          {/* Right Column — Education & Key Highlights */}
+          {/* Right Column — Education & Certifications */}
           <div className="glass-card resume-card resume-card--right">
             <div>
               <div className="resume-card__head">
                 <div className="project-card__meta">
                   <span className="project-card__dot" aria-hidden="true" />
-                  <span className="resume-card__kicker">EDUCATION & KEY HIGHLIGHTS</span>
+                  <span className="resume-card__kicker">EDUCATION &amp; CERTIFICATIONS</span>
                 </div>
-                <span className="project-card__status">B.Sc. Honors</span>
+                <span className="project-card__status">UTM &amp; Credentials</span>
               </div>
 
-              <div className="timeline timeline--single">
-                <article className="timeline-item">
-                  <div className="timeline-item__marker" aria-hidden="true" />
-                  <div className="timeline-item__content">
-                    <div className="timeline-item__top">
-                      <h3 className="timeline-item__role">{EDUCATION_ITEM.degree}</h3>
-                      <span className="timeline-item__period">{EDUCATION_ITEM.period}</span>
+              <div className="timeline">
+                {EDUCATION_AND_CERTIFICATIONS.map((item) => (
+                  <article key={item.title} className="timeline-item">
+                    <div className="timeline-item__marker" aria-hidden="true" />
+                    <div className="timeline-item__content">
+                      <div className="timeline-item__top">
+                        <h3 className="timeline-item__role">{item.title}</h3>
+                        <span className="timeline-item__period">{item.period}</span>
+                      </div>
+                      <p className="timeline-item__org">{item.institution}</p>
                     </div>
-                    <p className="timeline-item__org">{EDUCATION_ITEM.institution}</p>
-                    <ul className="timeline-bullets">
-                      {EDUCATION_ITEM.bullets.map((bullet) => (
-                        <li key={bullet}>{bullet}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
+                  </article>
+                ))}
               </div>
 
               <div className="resume-subsection">
@@ -99,16 +96,15 @@ export function ResumeSection() {
 
             <div className="resume-contact-row" aria-label="Resume contact and links">
               <div className="resume-contact-item">
-                <span className="resume-contact-item__label">Location</span>
-                <span className="resume-contact-item__value">{RESUME_CONTACT.location}</span>
+                <span className="resume-contact-item__label">Mobile</span>
+                <a href={RESUME_CONTACT.mobileHref} className="resume-contact-item__link">
+                  {RESUME_CONTACT.mobile}
+                </a>
               </div>
               <div className="resume-contact-item">
                 <span className="resume-contact-item__label">Email</span>
-                <a
-                  href="mailto:p.nurizzirfan@gmail.com"
-                  className="resume-contact-item__link"
-                >
-                  p.nurizzirfan@gmail.com
+                <a href={RESUME_CONTACT.emailHref} className="resume-contact-item__link">
+                  {RESUME_CONTACT.email}
                 </a>
               </div>
               <div className="resume-contact-item">
@@ -125,13 +121,12 @@ export function ResumeSection() {
               <div className="resume-contact-item">
                 <span className="resume-contact-item__label">LinkedIn</span>
                 <a
-                  href="https://www.linkedin.com/in/putra-nurizz-irfan-bin-safnirizal/"
+                  href={RESUME_CONTACT.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="resume-contact-item__link"
-                  style={{ wordBreak: 'break-all' }}
                 >
-                  linkedin.com/in/putra-nurizz-irfan-bin-safnirizal
+                  {RESUME_CONTACT.linkedin}
                 </a>
               </div>
             </div>

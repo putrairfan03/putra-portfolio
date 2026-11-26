@@ -2,43 +2,19 @@ import { useEffect } from 'react';
 import { ArrowUpRightIcon } from './Hero';
 import {
   CORE_COMPETENCIES,
-  EDUCATION_ITEM,
+  EDUCATION_AND_CERTIFICATIONS,
   EXPERIENCE_ITEMS,
+  PROFESSIONAL_STATEMENT,
   RESUME_CONTACT,
+  RESUME_FULL_NAME,
   RESUME_PDF_URL,
+  RESUME_PROJECTS,
 } from '../data/resumeData';
 
 interface ResumePrintModalProps {
   open: boolean;
   onClose: () => void;
 }
-
-const CV_PROJECTS = [
-  {
-    title: 'SQLQuest: Data Analyst Academy',
-    meta: 'HTML/JS · SQL · Google Sheets API',
-    summary:
-      'Gamified SQL learning web app featuring interactive exercises and automated Google Sheets certificate logging.',
-  },
-  {
-    title: 'PyQuest Academy',
-    meta: 'Python · Web App · GitHub Pages',
-    summary:
-      'Interactive Python academy tailored for beginners mastering core programming and data fundamentals.',
-  },
-  {
-    title: 'District School Health & BMI SQL Analysis',
-    meta: 'SQLite · Python · Data Analysis',
-    summary:
-      'Anonymized SQLite analysis evaluating BMI and SEGAK physical fitness records across 95 Kota Tinggi schools.',
-  },
-  {
-    title: 'Automated School Monitoring & Result System',
-    meta: 'Google Apps Script · AppSheet · Automation',
-    summary:
-      'Real-time monitoring web dashboard and automated exam slip generator with integrated barcode scanning.',
-  },
-];
 
 export function ResumePrintModal({ open, onClose }: ResumePrintModalProps) {
   useEffect(() => {
@@ -111,39 +87,35 @@ export function ResumePrintModal({ open, onClose }: ResumePrintModalProps) {
           <article className="cv-a4-sheet">
             <header className="cv-a4-header">
               <div>
-                <h1 className="cv-a4-name">Putra Irfan</h1>
+                <h1 className="cv-a4-name">{RESUME_FULL_NAME}</h1>
                 <p className="cv-a4-tagline">
                   Industrial Mathematics &amp; Data Analytics
                 </p>
               </div>
               <div className="cv-a4-contact">
-                <span>{RESUME_CONTACT.location}</span>
+                <span>{RESUME_CONTACT.mobile}</span>
                 <span>{RESUME_CONTACT.email}</span>
-                <span>{RESUME_CONTACT.github}</span>
                 <span>{RESUME_CONTACT.linkedin}</span>
+                <span>{RESUME_CONTACT.github}</span>
               </div>
             </header>
 
             <section className="cv-a4-section">
-              <h2 className="cv-a4-section-title">Profile</h2>
-              <p className="cv-a4-summary">
-                Industrial Mathematics graduate from Universiti Teknologi Malaysia (UTM)
-                based in Johor, Malaysia, experienced in educational data management,
-                statistical modeling, SQL analytics, and building automated web workflows
-                for practical administrative and learning impact.
-              </p>
+              <h2 className="cv-a4-section-title">Professional Statement</h2>
+              <p className="cv-a4-summary">{PROFESSIONAL_STATEMENT}</p>
             </section>
 
             <section className="cv-a4-section">
-              <h2 className="cv-a4-section-title">Experience</h2>
+              <h2 className="cv-a4-section-title">Working Experience</h2>
               <div className="cv-a4-entries">
                 {EXPERIENCE_ITEMS.map((item) => (
                   <div key={item.role} className="cv-a4-entry">
                     <div className="cv-a4-entry-row">
-                      <h3 className="cv-a4-entry-title">{item.role}</h3>
+                      <h3 className="cv-a4-entry-title">
+                        {item.organization} | {item.role}
+                      </h3>
                       <span className="cv-a4-entry-date">{item.period}</span>
                     </div>
-                    <p className="cv-a4-entry-org">{item.organization}</p>
                     <ul className="cv-a4-list">
                       {item.bullets.map((bullet) => (
                         <li key={bullet}>{bullet}</li>
@@ -155,31 +127,38 @@ export function ResumePrintModal({ open, onClose }: ResumePrintModalProps) {
             </section>
 
             <section className="cv-a4-section">
-              <h2 className="cv-a4-section-title">Education</h2>
-              <div className="cv-a4-entry">
-                <div className="cv-a4-entry-row">
-                  <h3 className="cv-a4-entry-title">{EDUCATION_ITEM.degree}</h3>
-                  <span className="cv-a4-entry-date">{EDUCATION_ITEM.period}</span>
-                </div>
-                <p className="cv-a4-entry-org">{EDUCATION_ITEM.institution}</p>
-                <ul className="cv-a4-list">
-                  {EDUCATION_ITEM.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
+              <h2 className="cv-a4-section-title">
+                Selected Analytics &amp; Automation Projects
+              </h2>
+              <div className="cv-a4-projects">
+                {RESUME_PROJECTS.map((proj) => (
+                  <div key={proj.title} className="cv-a4-project">
+                    <div className="cv-a4-entry-row">
+                      <h3 className="cv-a4-entry-title">
+                        {proj.title} | {proj.tool}
+                      </h3>
+                      <span className="cv-a4-entry-date">{proj.period}</span>
+                    </div>
+                    <ul className="cv-a4-list">
+                      {proj.bullets.map((bullet) => (
+                        <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
             </section>
 
             <section className="cv-a4-section">
-              <h2 className="cv-a4-section-title">Selected Projects</h2>
-              <div className="cv-a4-projects">
-                {CV_PROJECTS.map((proj) => (
-                  <div key={proj.title} className="cv-a4-project">
-                    <div className="cv-a4-entry-row">
-                      <h3 className="cv-a4-entry-title">{proj.title}</h3>
-                      <span className="cv-a4-project-meta">{proj.meta}</span>
-                    </div>
-                    <p className="cv-a4-project-desc">{proj.summary}</p>
+              <h2 className="cv-a4-section-title">Education &amp; Certifications</h2>
+              <div className="cv-a4-entries">
+                {EDUCATION_AND_CERTIFICATIONS.map((item) => (
+                  <div key={item.title} className="cv-a4-entry-row">
+                    <h3 className="cv-a4-entry-title">
+                      {item.title}{' '}
+                      <span className="cv-a4-project-meta">— {item.institution}</span>
+                    </h3>
+                    <span className="cv-a4-entry-date">{item.period}</span>
                   </div>
                 ))}
               </div>
