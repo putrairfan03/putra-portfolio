@@ -120,7 +120,7 @@ export function AboutContactSection({ onOpenCvPreview }: AboutContactSectionProp
         <div className="about-layout">
           <div className="about-bio-col">
             <div className="section-eyebrow-row">
-              <span className="section-index">04</span>
+              <span className="section-index">05</span>
               <span className="section-eyebrow-line" aria-hidden="true" />
               <span className="section-eyebrow">ABOUT</span>
             </div>
