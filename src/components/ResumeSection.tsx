@@ -1,26 +1,9 @@
-import { ArrowUpRightIcon } from './Hero';
 import {
   CORE_COMPETENCIES,
-  ECERTIFICATES_URL,
   EDUCATION_AND_CERTIFICATIONS,
   EXPERIENCE_ITEMS,
   RESUME_CONTACT,
 } from '../data/resumeData';
-
-function CertificateIcon() {
-  return (
-    <svg viewBox="0 0 18 18" fill="none" className="contact-btn__icon" aria-hidden="true">
-      <circle cx="9" cy="7" r="3.75" stroke="currentColor" strokeWidth="1.35" />
-      <path
-        d="M6.75 10.25L5.75 15.25L9 13.5L12.25 15.25L11.25 10.25"
-        stroke="currentColor"
-        strokeWidth="1.35"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 export function ResumeSection() {
   return (
@@ -38,19 +21,6 @@ export function ResumeSection() {
               Experience &amp;{' '}
               <span className="section-heading--italic">Education.</span>
             </h2>
-
-            <div className="resume-header-actions">
-              <a
-                href={ECERTIFICATES_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pill-btn pill-btn--resume-outline"
-              >
-                <CertificateIcon />
-                <span>View E-Certificates</span>
-                <ArrowUpRightIcon className="pill-btn__arrow" />
-              </a>
-            </div>
           </div>
         </header>
 
